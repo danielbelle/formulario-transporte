@@ -112,5 +112,13 @@ return [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
+    'stream' => [
+        'ssl' => [
+            'allow_self_signed' => false,
+            'verify_peer' => true,
+            'verify_peer_name' => true,
+            'cafile' => '/etc/ssl/certs/ca-certificates.crt',
+        ],
+    ],
 
 ];
