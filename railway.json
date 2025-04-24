@@ -6,8 +6,8 @@
     "deploy": {
         "runtime": "V2",
         "numReplicas": 1,
-        "buildCommand": "composer install --optimize-autoloader --no-dev && npm install && npm run build && php artisan optimize",
-        "startCommand": "php-fpm && nginx -c /app/nginx.conf",
+        "buildCommand": "composer install --optimize-autoloader --no-dev && npm install && npm run build && php artisan optimize && chmod -R 775 storage bootstrap/cache",
+        "startCommand": "php server.php",
         "limitOverride": {
             "containers": {
                 "cpu": 0.5,
