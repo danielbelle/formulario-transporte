@@ -3,7 +3,9 @@
         "builder": "nixpacks",
         "config": {
             "NIXPACKS_PHP_VERSION": "8.4",
-            "NIXPACKS_NODE_VERSION": "20"
+            "NIXPACKS_NODE_VERSION": "20",
+            "buildCommand": "composer install --optimize-autoloader --no-dev && npm install && npm run build",
+            "startCommand": "php artisan serve --host=0.0.0.0 --port=$PORT"
         }
     },
     "deploy": {
