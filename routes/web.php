@@ -1,11 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\InputController;
+use App\Http\Controllers\AttachedController;
+
 
 Route::get('/', function () {
-    return view('test');
+    return view('home');
 });
-Route::get('/test-email', function () {
-    Mail::send(new \App\Mail\TestMail());
-});
+
+Route::get('/input-form', [InputController::class, 'showFormInput'])->name('input.form');
+Route::post('/process-input', [InputController::class, 'processInput'])->name('process.input');
+
+Route::get('/email', function () {
+    return view('mail.contact2');
+})->name('emailPreview');
+
+Route::get('/attachment/{filename}', [AttachedController::class, 'showAttachedFiles'])->name('show.attachment')->middleware('signed');
